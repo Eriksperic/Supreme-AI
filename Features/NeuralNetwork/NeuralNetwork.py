@@ -1,6 +1,7 @@
 from NetworkBuilder import NetworkBuilder
 from NetworkBuilder import Director
-from LossFunctions import cross_entropy
+from Utilities.LossFunctions import cross_entropy
+
 
 import numpy as np
 class NeuralNetwork:

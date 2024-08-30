@@ -26,7 +26,6 @@ class window(QWidget):
       self.vBox.addWidget(self.image_title, 0)
       self.vBox.addWidget(self.button, 0)
 
-
       self.resize(200, 300)
       self.setLayout(self.vBox)
 

@@ -13,6 +13,9 @@ class NetworkBuilder:
     def build_pooling_layer(self, pool_size, subsampling_op):
         pass
 
+    def build_dropout_layer(self, factor):
+        pass
+
     # Builds a fully connected layer
     def build_FC_layer(self, neuron_count, activation_func):
         pass
