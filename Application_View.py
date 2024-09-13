@@ -11,7 +11,10 @@ class window(QWidget):
 
       self.grid = QGridLayout()
       self.vBox = QVBoxLayout()
+      self.hBox = QHBoxLayout() # Main layout
+
       self.vBox.setSpacing(1)
+
       self.button = QPushButton("Browse")
       self.image_label = QLabel()
       self.image_label.setFixedSize(200, 200)
@@ -19,15 +22,20 @@ class window(QWidget):
 
       self.image_title = QLabel("Imported Image Title Here")
 
-
       self.button.clicked.connect(self.open_image)
 
       self.vBox.addWidget(self.image_label, 0)
       self.vBox.addWidget(self.image_title, 0)
       self.vBox.addWidget(self.button, 0)
 
+      self.hBox.addLayout(self.vBox)
+
+
+      self.hBox.addWidget()
+
+
       self.resize(200, 300)
-      self.setLayout(self.vBox)
+      self.setLayout(self.hBox)
 
    def open_image(self):
       options = QFileDialog.Options()
@@ -35,16 +43,11 @@ class window(QWidget):
       file_name, _ = QFileDialog.getOpenFileName(self, "Open Image File", "",
                                                  "Image Files (*.png *.jpg *.bmp *.gif);;All Files (*)",
                                                  options=options)
-
       if file_name:
          pixmap = QPixmap(file_name)
-
          self.image_title.setText(file_name)
          image = pixmap.toImage()
-
          self.qimage_to_numpy(image)
-
-
          scaled_pixmap = pixmap.scaled(self.image_label.size(), Qt.KeepAspectRatio, Qt.FastTransformation)
          self.image_label.setPixmap(scaled_pixmap)
          self.image_label.setScaledContents(True)
